@@ -1,0 +1,23 @@
+syntax = "proto3";
+
+option go_package = "github.com/Commish-Me/api/auth";
+
+package auth;
+
+import "google/api/annotations.proto";
+
+// The greeting service definition.
+service Auth {
+  // Returns a list of recent auit entries for the user
+  rpc Login(AuthRequest) returns (AuthReply) {
+    option (google.api.http) = { get: "/auth/login" };
+  }
+}
+
+message AuthRequest {
+  string name = 1;
+}
+
+message AuthReply {
+  string message = 1;
+}

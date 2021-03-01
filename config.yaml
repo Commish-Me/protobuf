@@ -1,0 +1,26 @@
+type: google.api.Service
+config_version: 3
+name: "*.apigateway.comish-me.cloud.goog"
+title: API
+authentication:
+  providers:
+    - id: commish_me_auth
+      jwks_uri: https://www.googleapis.com/oauth2/v1/certs
+      issuer: https://securetoken.google.com
+  rules:
+  - selector: "*"
+    requirements:
+      - provider_id: commish_me_auth
+usage:
+  rules:
+  - selector: auth.Auth.Login
+    allow_unregistered_calls: true
+
+apis:
+  - name: auth.Auth
+backend:
+  rules:
+    - selector: auth.Auth.*
+      address: grpcs://api-hlxxq34iuq-uc.a.run.app
+    - selector: auth.Auth.*
+      address: https://api-hlxxq34iuq-uc.a.run.app
