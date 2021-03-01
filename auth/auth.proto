@@ -1,6 +1,6 @@
 syntax = "proto3";
 
-option go_package = "github.com/Commish-Me/api/auth";
+option go_package = "github.com/Commish-Me/go-api";
 
 package auth;
 

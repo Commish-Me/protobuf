@@ -1,0 +1,23 @@
+syntax = "proto3";
+
+option go_package = "github.com/Commish-Me/go-api";
+
+package audit;
+
+import "google/api/annotations.proto";
+
+// The greeting service definition.
+service Audit {
+  // Returns a list of recent auit entries for the user
+  rpc GetUserAuditEntries(UserAuditRequest) returns (stream ParsedAuditEntry) {
+    option (google.api.http) = { get: "/v1/user/{userID}/audit" };
+  }
+}
+
+message UserAuditRequest {
+  string userID = 1;
+}
+
+message ParsedAuditEntry {
+  string message = 1;
+}
